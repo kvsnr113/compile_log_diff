@@ -1,0 +1,104 @@
+--- sorted_munch.txt	2025-03-11 17:16:34.774039295 +0700
++++ sorted_alioth.txt	2025-03-11 17:16:34.803039747 +0700
+@@ -141,7 +141,7 @@
+   AR      drivers/input/misc/built-in.a
+   AR      drivers/input/serio/built-in.a
+   AR      drivers/input/touchscreen/built-in.a
+-  AR      drivers/input/touchscreen/nt36672c/built-in.a
++  AR      drivers/input/touchscreen/focaltech_spi/built-in.a
+   AR      drivers/input/touchscreen/xiaomi/built-in.a
+   AR      drivers/iommu/built-in.a
+   AR      drivers/irqchip/built-in.a
+@@ -597,10 +597,7 @@
+   AS      arch/arm64/mm/cache.o
+   AS      arch/arm64/mm/proc.o
+   AS      certs/system_certificates.o
+-  AS      firmware/novatek_nt36675_j3s_fw01.bin.gen.o
+-  AS      firmware/novatek_nt36675_j3s_mp01.bin.gen.o
+-  AS      firmware/novatek_ts_fw.bin.gen.o
+-  AS      firmware/novatek_ts_mp.bin.gen.o
++  AS      firmware/focaltech_ts_fw.bin.gen.o
+   AS      lib/lz4/lz4armv8/lz4armv8.o
+   ASN.1   crypto/asymmetric_keys/pkcs7.asn1.c
+   ASN.1   crypto/asymmetric_keys/x509_akid.asn1.c
+@@ -1160,7 +1157,7 @@
+   CC      drivers/input/event_notify.o
+   CC      drivers/input/ff-core.o
+   CC      drivers/input/ff-memless.o
+-  CC      drivers/input/fingerprint/fpc_tee/fpc1020_tee_old.o
++  CC      drivers/input/fingerprint/fpc_tee/fpc1020_tee.o
+   CC      drivers/input/input-compat.o
+   CC      drivers/input/input-leds.o
+   CC      drivers/input/input-mt.o
+@@ -1175,11 +1172,15 @@
+   CC      drivers/input/misc/uinput.o
+   CC      drivers/input/serio/libps2.o
+   CC      drivers/input/serio/serio.o
+-  CC      drivers/input/touchscreen/nt36672c/nt36xxx_ext_proc.o
+-  CC      drivers/input/touchscreen/nt36672c/nt36xxx_fw_update.o
+-  CC      drivers/input/touchscreen/nt36672c/nt36xxx_mp_ctrlram_data.o
+-  CC      drivers/input/touchscreen/nt36672c/nt36xxx_mp_ctrlram.o
+-  CC      drivers/input/touchscreen/nt36672c/nt36xxx.o
++  CC      drivers/input/touchscreen/focaltech_spi/focaltech_core.o
++  CC      drivers/input/touchscreen/focaltech_spi/focaltech_esdcheck.o
++  CC      drivers/input/touchscreen/focaltech_spi/focaltech_ex_fun.o
++  CC      drivers/input/touchscreen/focaltech_spi/focaltech_ex_mode.o
++  CC      drivers/input/touchscreen/focaltech_spi/focaltech_flash/focaltech_upgrade_ft3658u.o
++  CC      drivers/input/touchscreen/focaltech_spi/focaltech_flash.o
++  CC      drivers/input/touchscreen/focaltech_spi/focaltech_gesture.o
++  CC      drivers/input/touchscreen/focaltech_spi/focaltech_point_report_check.o
++  CC      drivers/input/touchscreen/focaltech_spi/focaltech_spi.o
+   CC      drivers/input/touchscreen/of_touchscreen.o
+   CC      drivers/input/touchscreen/tp_common.o
+   CC      drivers/input/touchscreen/xiaomi/xiaomi_touch.o
+@@ -1335,7 +1336,6 @@
+   CC      drivers/misc/msm_hdcp.o
+   CC      drivers/misc/perf_helper.o
+   CC      drivers/misc/qseecom.o
+-  CC      drivers/misc/spi-xiaomi-tp.o
+   CC      drivers/misc/uid_sys_stats.o
+   CC      drivers/net/dummy.o
+   CC      drivers/net/ethernet/qualcomm/rmnet/rmnet_config.o
+@@ -1526,7 +1526,6 @@
+   CC      drivers/power/supply/qcom/fg-alg.o
+   CC      drivers/power/supply/qcom/fg-memif.o
+   CC      drivers/power/supply/qcom/fg-util.o
+-  CC      drivers/power/supply/qcom/hl6111r.o
+   CC      drivers/power/supply/qcom/pmic-voter.o
+   CC      drivers/power/supply/qcom/qpnp-fg-gen4.o
+   CC      drivers/power/supply/qcom/qpnp-qnovo5.o
+@@ -3992,8 +3991,8 @@
+   CHK     include/generated/compile.h
+   DTBOIMG arch/arm64/boot/dtbo.img
+   DTBOIMG arch/arm64/boot/dtbo.img
+-  DTC     arch/arm64/boot/dts/vendor/qcom/apollo-sm8250-overlay.dtbo
+-  DTC     arch/arm64/boot/dts/vendor/qcom/apollo-sm8250-overlay.dtbo
++  DTC     arch/arm64/boot/dts/vendor/qcom/alioth-sm8250-overlay.dtbo
++  DTC     arch/arm64/boot/dts/vendor/qcom/alioth-sm8250-overlay.dtbo
+   DTC     arch/arm64/boot/dts/vendor/qcom/kona-v2.1.dtb
+   DTC     arch/arm64/boot/dts/vendor/qcom/kona-v2.1.dtb
+   DTC     arch/arm64/boot/dts/vendor/qcom/kona-v2.1.dtb
+@@ -4043,10 +4042,7 @@
+   HOSTCC  usr/gen_init_cpio
+   HOSTLD  scripts/dtc/dtc
+   HOSTLD  scripts/mod/modpost
+-  IHEX    firmware/novatek_nt36675_j3s_fw01.bin
+-  IHEX    firmware/novatek_nt36675_j3s_mp01.bin
+-  IHEX    firmware/novatek_ts_fw.bin
+-  IHEX    firmware/novatek_ts_mp.bin
++  IHEX    firmware/focaltech_ts_fw.bin
+ -- KernelSU-Next Manager signature hash: 79e590113c4c4c0c222978e413a5faa801666957b1212a328e46c00c69821bf7
+ -- KernelSU-Next Manager signature size: 0x3e6
+ -- KernelSU-Next version: 12430
+@@ -4067,10 +4063,7 @@
+   LD      vmlinux.o
+   LEX     scripts/dtc/dtc-lexer.lex.c
+   MKELF   scripts/mod/elfconfig.h
+-  MK_FW   firmware/novatek_nt36675_j3s_fw01.bin.gen.S
+-  MK_FW   firmware/novatek_nt36675_j3s_mp01.bin.gen.S
+-  MK_FW   firmware/novatek_ts_fw.bin.gen.S
+-  MK_FW   firmware/novatek_ts_mp.bin.gen.S
++  MK_FW   firmware/focaltech_ts_fw.bin.gen.S
+   MODPOST vmlinux.o
+   MODPOST vmlinux.o
+   MUNGE   arch/arm64/kernel/vdso32/vdso.so.dbg

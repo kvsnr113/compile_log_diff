@@ -1,0 +1,186 @@
+--- sorted_munch.txt	2025-03-11 17:21:33.155450948 +0700
++++ sorted_alioth.txt	2025-03-11 17:16:34.803039747 +0700
+@@ -135,14 +135,13 @@
+   AR      drivers/input/built-in.a
+   AR      drivers/input/fingerprint/built-in.a
+   AR      drivers/input/fingerprint/fpc_tee/built-in.a
+-  AR      drivers/input/fingerprint/goodix/built-in.a
+   AR      drivers/input/joystick/built-in.a
+   AR      drivers/input/keyboard/built-in.a
+-  AR      drivers/input/misc/aw8697_haptic_munch/built-in.a
++  AR      drivers/input/misc/aw8697_haptic/built-in.a
+   AR      drivers/input/misc/built-in.a
+   AR      drivers/input/serio/built-in.a
+   AR      drivers/input/touchscreen/built-in.a
+-  AR      drivers/input/touchscreen/focaltech_3658u/built-in.a
++  AR      drivers/input/touchscreen/focaltech_spi/built-in.a
+   AR      drivers/input/touchscreen/xiaomi/built-in.a
+   AR      drivers/iommu/built-in.a
+   AR      drivers/irqchip/built-in.a
+@@ -472,7 +471,7 @@
+   AR      techpack/audio/asoc/codecs/cs35l41/built-in.a
+   AR      techpack/audio/asoc/codecs/rouleur/built-in.a
+   AR      techpack/audio/asoc/codecs/sdm660_cdc/built-in.a
+-  AR      techpack/audio/asoc/codecs/tfa9874/built-in.a
++  AR      techpack/audio/asoc/codecs/tfa98xx/built-in.a
+   AR      techpack/audio/asoc/codecs/wcd934x/built-in.a
+   AR      techpack/audio/asoc/codecs/wcd937x/built-in.a
+   AR      techpack/audio/asoc/codecs/wcd938x/built-in.a
+@@ -598,6 +597,7 @@
+   AS      arch/arm64/mm/cache.o
+   AS      arch/arm64/mm/proc.o
+   AS      certs/system_certificates.o
++  AS      firmware/focaltech_ts_fw.bin.gen.o
+   AS      lib/lz4/lz4armv8/lz4armv8.o
+   ASN.1   crypto/asymmetric_keys/pkcs7.asn1.c
+   ASN.1   crypto/asymmetric_keys/x509_akid.asn1.c
+@@ -1157,10 +1157,7 @@
+   CC      drivers/input/event_notify.o
+   CC      drivers/input/ff-core.o
+   CC      drivers/input/ff-memless.o
+-  CC      drivers/input/fingerprint/fpc_tee/fpc1020_tee_old.o
+-  CC      drivers/input/fingerprint/goodix/gf_spi.o
+-  CC      drivers/input/fingerprint/goodix/netlink.o
+-  CC      drivers/input/fingerprint/goodix/platform.o
++  CC      drivers/input/fingerprint/fpc_tee/fpc1020_tee.o
+   CC      drivers/input/input-compat.o
+   CC      drivers/input/input-leds.o
+   CC      drivers/input/input-mt.o
+@@ -1169,24 +1166,21 @@
+   CC      drivers/input/joystick/xpad.o
+   CC      drivers/input/keyboard/atkbd.o
+   CC      drivers/input/keyboard/gpio_keys.o
+-  CC      drivers/input/misc/aw8697_haptic_munch/aw86907.o
+-  CC      drivers/input/misc/aw8697_haptic_munch/aw86927.o
+-  CC      drivers/input/misc/aw8697_haptic_munch/aw869x.o
+-  CC      drivers/input/misc/aw8697_haptic_munch/aw_haptic.o
+-  CC      drivers/input/misc/aw8697_haptic_munch/ringbuffer.o
++  CC      drivers/input/misc/aw8697_haptic/aw8697.o
++  CC      drivers/input/misc/aw8697_haptic/ringbuffer.o
+   CC      drivers/input/misc/qpnp-power-on.o
+   CC      drivers/input/misc/uinput.o
+   CC      drivers/input/serio/libps2.o
+   CC      drivers/input/serio/serio.o
+-  CC      drivers/input/touchscreen/focaltech_3658u/focaltech_core.o
+-  CC      drivers/input/touchscreen/focaltech_3658u/focaltech_esdcheck.o
+-  CC      drivers/input/touchscreen/focaltech_3658u/focaltech_ex_fun.o
+-  CC      drivers/input/touchscreen/focaltech_3658u/focaltech_ex_mode.o
+-  CC      drivers/input/touchscreen/focaltech_3658u/focaltech_flash/focaltech_upgrade_ft3658u.o
+-  CC      drivers/input/touchscreen/focaltech_3658u/focaltech_flash.o
+-  CC      drivers/input/touchscreen/focaltech_3658u/focaltech_gesture.o
+-  CC      drivers/input/touchscreen/focaltech_3658u/focaltech_point_report_check.o
+-  CC      drivers/input/touchscreen/focaltech_3658u/focaltech_spi.o
++  CC      drivers/input/touchscreen/focaltech_spi/focaltech_core.o
++  CC      drivers/input/touchscreen/focaltech_spi/focaltech_esdcheck.o
++  CC      drivers/input/touchscreen/focaltech_spi/focaltech_ex_fun.o
++  CC      drivers/input/touchscreen/focaltech_spi/focaltech_ex_mode.o
++  CC      drivers/input/touchscreen/focaltech_spi/focaltech_flash/focaltech_upgrade_ft3658u.o
++  CC      drivers/input/touchscreen/focaltech_spi/focaltech_flash.o
++  CC      drivers/input/touchscreen/focaltech_spi/focaltech_gesture.o
++  CC      drivers/input/touchscreen/focaltech_spi/focaltech_point_report_check.o
++  CC      drivers/input/touchscreen/focaltech_spi/focaltech_spi.o
+   CC      drivers/input/touchscreen/of_touchscreen.o
+   CC      drivers/input/touchscreen/tp_common.o
+   CC      drivers/input/touchscreen/xiaomi/xiaomi_touch.o
+@@ -1229,7 +1223,6 @@
+   CC      drivers/kernelsu/throne_tracker.o
+   CC      drivers/leds/led-class.o
+   CC      drivers/leds/led-core.o
+-  CC      drivers/leds/leds-aw22xxx.o
+   CC      drivers/leds/leds-qpnp-flash-common.o
+   CC      drivers/leds/leds-qpnp-flash-v2.o
+   CC      drivers/leds/leds-qti-tri-led.o
+@@ -1522,22 +1515,28 @@
+   CC      drivers/platform/msm/sps/sps_rm.o
+   CC      drivers/platform/msm/usb_bam.o
+   CC      drivers/power/reset/msm-poweroff.o
++  CC      drivers/power/supply/maxim/ds28e16.o
++  CC      drivers/power/supply/maxim/onewire_gpio.o
++  CC      drivers/power/supply/maxim/sha384_software.o
++  CC      drivers/power/supply/maxim/ucl_sha3.o
+   CC      drivers/power/supply/power_supply_core.o
+   CC      drivers/power/supply/power_supply_leds.o
+   CC      drivers/power/supply/power_supply_sysfs.o
+   CC      drivers/power/supply/qcom/battery.o
+-  CC      drivers/power/supply/qcom/bq27z561_fg_munch.o
++  CC      drivers/power/supply/qcom/fg-alg.o
++  CC      drivers/power/supply/qcom/fg-memif.o
++  CC      drivers/power/supply/qcom/fg-util.o
+   CC      drivers/power/supply/qcom/pmic-voter.o
++  CC      drivers/power/supply/qcom/qpnp-fg-gen4.o
+   CC      drivers/power/supply/qcom/qpnp-qnovo5.o
+-  CC      drivers/power/supply/qcom/qpnp-smb5-munch.o
++  CC      drivers/power/supply/qcom/qpnp-smb5.o
+   CC      drivers/power/supply/qcom/schgm-flash.o
+-  CC      drivers/power/supply/qcom/smb5-lib-munch.o
+-  CC      drivers/power/supply/qcom/step-chg-jeita-munch.o
++  CC      drivers/power/supply/qcom/smb5-lib.o
++  CC      drivers/power/supply/qcom/step-chg-jeita.o
+   CC      drivers/power/supply/qcom/storm-watch.o
+-  CC      drivers/power/supply/ti/bq2597x_charger_munch.o
+-  CC      drivers/power/supply/ti/cp_qc30_munch.o
+-  CC      drivers/power/supply/ti/ln8000_charger_munch.o
+-  CC      drivers/power/supply/ti/pd_policy_manager_munch.o
++  CC      drivers/power/supply/ti/bq2597x_charger.o
++  CC      drivers/power/supply/ti/cp_qc30.o
++  CC      drivers/power/supply/ti/pd_policy_manager.o
+   CC      drivers/pps/kapi.o
+   CC      drivers/pps/pps.o
+   CC      drivers/pps/sysfs.o
+@@ -1818,7 +1817,7 @@
+   CC      drivers/usb/isp1760/isp1760-core.o
+   CC      drivers/usb/isp1760/isp1760-hcd.o
+   CC      drivers/usb/isp1760/isp1760-if.o
+-  CC      drivers/usb/pd/policy_engine_munch.o
++  CC      drivers/usb/pd/policy_engine.o
+   CC      drivers/usb/pd/qpnp-pdphy.o
+   CC      drivers/usb/phy/of.o
+   CC      drivers/usb/phy/phy-generic.o
+@@ -3121,10 +3120,10 @@
+   CC      techpack/audio/asoc/codecs/msm-cdc-pinctrl.o
+   CC      techpack/audio/asoc/codecs/msm-cdc-supply.o
+   CC      techpack/audio/asoc/codecs/msm_stub.o
+-  CC      techpack/audio/asoc/codecs/tfa9874/src/tfa98xx.o
+-  CC      techpack/audio/asoc/codecs/tfa9874/src/tfa_container.o
+-  CC      techpack/audio/asoc/codecs/tfa9874/src/tfa_dsp.o
+-  CC      techpack/audio/asoc/codecs/tfa9874/src/tfa_init.o
++  CC      techpack/audio/asoc/codecs/tfa98xx/src/tfa98xx.o
++  CC      techpack/audio/asoc/codecs/tfa98xx/src/tfa_container.o
++  CC      techpack/audio/asoc/codecs/tfa98xx/src/tfa_dsp.o
++  CC      techpack/audio/asoc/codecs/tfa98xx/src/tfa_init.o
+   CC      techpack/audio/asoc/codecs/wcd938x/send_data_to_xlog.o
+   CC      techpack/audio/asoc/codecs/wcd938x/wcd938x-mbhc.o
+   CC      techpack/audio/asoc/codecs/wcd938x/wcd938x.o
+@@ -3992,14 +3991,14 @@
+   CHK     include/generated/compile.h
+   DTBOIMG arch/arm64/boot/dtbo.img
+   DTBOIMG arch/arm64/boot/dtbo.img
++  DTC     arch/arm64/boot/dts/vendor/qcom/alioth-sm8250-overlay.dtbo
++  DTC     arch/arm64/boot/dts/vendor/qcom/alioth-sm8250-overlay.dtbo
+   DTC     arch/arm64/boot/dts/vendor/qcom/kona-v2.1.dtb
+   DTC     arch/arm64/boot/dts/vendor/qcom/kona-v2.1.dtb
+   DTC     arch/arm64/boot/dts/vendor/qcom/kona-v2.1.dtb
+   DTC     arch/arm64/boot/dts/vendor/qcom/kona-v2.1.dtb
+   DTC     arch/arm64/boot/dts/vendor/qcom/kona-v2.1.dtb
+   DTC     arch/arm64/boot/dts/vendor/qcom/kona-v2.1.dtb
+-  DTC     arch/arm64/boot/dts/vendor/qcom/munch-sm8250-overlay.dtbo
+-  DTC     arch/arm64/boot/dts/vendor/qcom/munch-sm8250-overlay.dtbo
+   EXTRACT_CERTS   
+   GEN     drivers/scsi/scsi_devinfo_tbl.c
+   GEN     lib/crc32table.h
+@@ -4043,6 +4042,7 @@
+   HOSTCC  usr/gen_init_cpio
+   HOSTLD  scripts/dtc/dtc
+   HOSTLD  scripts/mod/modpost
++  IHEX    firmware/focaltech_ts_fw.bin
+ -- KernelSU-Next Manager signature hash: 79e590113c4c4c0c222978e413a5faa801666957b1212a328e46c00c69821bf7
+ -- KernelSU-Next Manager signature size: 0x3e6
+ -- KernelSU-Next version: 12430
+@@ -4063,6 +4063,7 @@
+   LD      vmlinux.o
+   LEX     scripts/dtc/dtc-lexer.lex.c
+   MKELF   scripts/mod/elfconfig.h
++  MK_FW   firmware/focaltech_ts_fw.bin.gen.S
+   MODPOST vmlinux.o
+   MODPOST vmlinux.o
+   MUNGE   arch/arm64/kernel/vdso32/vdso.so.dbg
